@@ -1,11 +1,11 @@
 # proofpoint-go
 Client for proofpoint POD logging. 
 
-- lib/models: ProofpointMessage, empty fields not omitted
-- lib/modelsomitempty: ProofpointMessage, empty fields omitted
+- **lib/models:** ProofpointMessage, empty fields not omitted
+- **lib/modelsomitempty:** ProofpointMessage, empty fields omitted
 
 ## TODO
-- [WIP]: flesh out the client; from what I can tell websockets should keep
+- **[WIP]**: flesh out the client; from what I can tell websockets should keep
 connection open and stream events, however this has not been the case with the
 proofpoint POD api; in a python version of this using asyncio, the server will
 often term the session with OK status, so implementing a polling model is
