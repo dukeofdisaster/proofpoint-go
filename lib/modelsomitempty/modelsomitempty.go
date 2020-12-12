@@ -2,6 +2,8 @@ package modelsomitempty
 
 // Modeling the Messages received from proofpoint logs
 // ProofpointMessage is top level object
+// Consider making structs pointers that way empty structs will be omitted
+// ref: https://stackoverflow.com/questions/18088294/how-to-not-marshal-an-empty-struct-into-json-with-go
 type ProofpointMessage struct {
 	Connection ConnectionObject `json:"connection,omitempty"`
 	Envelope   EnvelopeObject   `json:"envelope,omitempty"`
