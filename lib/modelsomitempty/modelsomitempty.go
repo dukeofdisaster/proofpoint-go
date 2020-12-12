@@ -7,10 +7,22 @@ type ProofpointMessage struct {
 	Envelope   EnvelopeObject   `json:"envelope,omitempty"`
 	Filter     FilterObject     `json:"filter,omitempty"`
 	Guid       string           `json:"guid,omitempty"`
+	Metadata   PPMetadataObject `json:"metadata,omitempty"`
 	Msg        MsgObject        `json:"msg,omitempty"`
 	MsgParts   []MsgPartsObject `json:"msgParts,omitempty"`
 	Pps        PpsObject        `json:"pps,omitempty"`
 	Ts         string           `json:"ts,omitempty"`
+}
+type PPMetadataObject struct {
+	Origin OriginObject `json:"origin,omitempty"`
+}
+type OriginObject struct {
+	Data OriginData `json:"data,omitempty"`
+}
+type OriginData struct {
+	Agent   string `json:"agent,omitempty"`
+	Cid     string `json:"cid,omitempty"`
+	Version string `json:"version,omitempty"`
 }
 type MsgObject struct {
 	Header           MsgHeaderObject        `json:"header,omitempty"`
@@ -22,11 +34,13 @@ type MsgObject struct {
 type MsgHeaderObject struct {
 	Cc         []string `json:"cc,omitempty"`
 	From       []string `json:"from,omitempty"`
+	FromHashed []string `json:"fromHashed,omitempty"`
 	MessageId  []string `json:"message-id,omitempty"`
 	ReplyTo    []string `json:"reply-to,omitempty"`
 	ReturnPath []string `json:"return-path,omitempty"`
 	Subject    []string `json:"subject,omitempty"`
 	To         []string `json:"to,omitempty"`
+	ToHashed   []string `json:"toHashed,omitempty"`
 }
 type PpsObject struct {
 	Agent   string `json:"agent,omitempty"`
@@ -36,7 +50,7 @@ type PpsObject struct {
 type ConnectionObject struct {
 	Sid           string    `json:"sid,omitempty"`
 	Country       string    `json:"country,omitempty"`
-	Helo          string    `json:"string,omitempty"`
+	Helo          string    `json:"helo,omitempty"`
 	Host          string    `json:"host,omitempty"`
 	Ip            string    `json:"ip,omitempty"`
 	Protocol      string    `json:protocol,omitempty"`
@@ -57,7 +71,8 @@ Docs say there is smime but no evidence of it in the logs
 */
 type FilterObject struct {
 	Actions         []FilterActionsObject `json:"actions,omitempty"`
-	Disposition     string                `json:"string,omitempty"`
+	Disposition     string                `json:"disposition,omitempty"`
+	Delivered       DeliveredObject       `json:"delivered,omitempty"`
 	Pe              PeObject              `json:"pe,omitempty"`
 	DurationSecs    float64               `json:"durationSecs,omitempty"`
 	CurrentFolder   string                `json:"currentFolder,omitempty"`
@@ -73,8 +88,17 @@ type FilterObject struct {
 	RouteDirection  string                `json:routeDirection,omitempty"`
 	StartTime       string                `json:"startTime,omitempty"`
 	SubOrgs         SubOrgsObject         `json:"suborgs,omitempty"`
+	Verified        VerifiedObject        `json:"verified,omitempty"`
 }
 
+type VerifiedObject struct {
+	Rcpts       []string `json:"rcpts,omitempty"`
+	RcptsHashed []string `json:"rcptsHashed,omitempty"`
+}
+
+type DeliveredObject struct {
+	Rcpts []string `json:"rcpts,omitempty"`
+}
 type FilterActionsObject struct {
 	Module  string `json:"module,omitempty"`
 	Rule    string `json:"rule,omitempty"`
@@ -287,10 +311,13 @@ type HeaderObject struct {
 type NormalizedHeaderObject struct {
 	Cc         []string `json:"cc,omitempty"`
 	From       []string `json:"from,omitempty"`
+	FromHashed []string `json:"fromHashed,omitempty"`
 	MessageId  []string `json:"message-id,omitempty"`
 	ReplyTo    []string `json:"reply-to,omitempty"`
 	ReturnPath []string `json:"return-path,omitempty"`
 	Subject    []string `json:"subject,omitempty"`
+	To         []string `json:"to,omitempty"`
+	ToHashed   []string `json:"toHashed,omitempty"`
 }
 type TlsObject struct {
 	Inbound InboundObject `json:"inbound,omitempty"`
