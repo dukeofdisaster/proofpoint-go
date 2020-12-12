@@ -130,7 +130,7 @@ type UrlDefenseObject struct {
 	Counts  CountsObject      `json:"counts,omitempty"`
 }
 type UrlDefenseVersion struct {
-	Engine string `json:"string,omitempty"`
+	Engine string `json:"engine,omitempty"`
 }
 
 /*
@@ -204,7 +204,7 @@ type DmarcObject struct {
 	Alignment      []AlignmentObject   `json:"alignment,omitempty"`
 }
 type DmarcRecordsObject struct {
-	Query  string `json:"string,omitempty"`
+	Query  string `json:"query,omitempty"`
 	Record string `json:"record,omitempty"`
 }
 type AlignmentObject struct {
