@@ -53,7 +53,7 @@ type ConnectionObject struct {
 	Helo          string    `json:"helo,omitempty"`
 	Host          string    `json:"host,omitempty"`
 	Ip            string    `json:"ip,omitempty"`
-	Protocol      string    `json:protocol,omitempty"`
+	Protocol      string    `json:"protocol,omitempty"`
 	ResolveStatus string    `json:"resolveStatus,omitempty"`
 	Tls           TlsObject `json:"tls,omitempty"`
 }
@@ -81,11 +81,11 @@ type FilterObject struct {
 	Mid             int64                 `json:"mid,omitempty"`
 	Modules         ModulesObject         `json:"modules,omitempty"`
 	MsgSizeBytes    int64                 `json:"msgSizeBytes,omitempty"`
-	OrigGuid        string                `json:origGuid,omitempty"`
-	Qid             string                `json:qid,omitempty"`
+	OrigGuid        string                `json:"origGuid,omitempty"`
+	Qid             string                `json:"qid,omitempty"`
 	Quarantine      QuarantineObject      `json:"quarantine,omitempty"`
 	Routes          []string              `json:"routes,omitempty"`
-	RouteDirection  string                `json:routeDirection,omitempty"`
+	RouteDirection  string                `json:"routeDirection,omitempty"`
 	StartTime       string                `json:"startTime,omitempty"`
 	SubOrgs         SubOrgsObject         `json:"suborgs,omitempty"`
 	Verified        VerifiedObject        `json:"verified,omitempty"`
@@ -285,7 +285,7 @@ type MsgPartsObject struct {
 type UrlsObject struct {
 	Url                string   `json:"url,omitempty"`
 	IsRewritten        bool     `json:"isRewritten,omitempty"`
-	NotRewrittenReason string   `json:notRewrittenReason,omitempty"`
+	NotRewrittenReason string   `json:"notRewrittenReason,omitempty"`
 	Src                []string `json:"src,omitempty"`
 }
 type MetadataObject struct {
